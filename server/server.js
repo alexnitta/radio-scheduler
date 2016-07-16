@@ -7,12 +7,12 @@ const path = require('path');
 const router = express.Router();
 
 // import system settings
-const networkSettings = '/../config/network-settings';
+const networkSettings = './config/network-settings';
 const PORT = networkSettings.PORT;
 const ENV = process.env.NODE_ENV;
 const sslSettings = {
-  key: fs.readFileSync('/config/keys/privKey.pem'),
-  cert: fs.readFileSync('/config/keys/cert.pem')
+  key: fs.readFileSync('./config/private/ssl-keys/privKey.pem'),
+  cert: fs.readFileSync('./config/private/ssl-keys/cert.pem')
 };
 
 // instantiate server application
