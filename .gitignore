@@ -1,2 +1,5 @@
 #Private config files
-config/private/*
+config/private/
+
+#Sass
+client/.sass-cache/
