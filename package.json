@@ -1,8 +1,8 @@
 {
   "name": "radio-scheduler",
   "version": "1.0.0",
-  "description": "View public radio schedules based on your location.",
-  "main": "index.js",
+  "description": "Shows a schedule of public radio programs based on your location",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
