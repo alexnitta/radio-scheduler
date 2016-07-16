@@ -1,0 +1,18 @@
+Thoughts on the system architecture:
+  Stack:
+    React
+    Node / Express: fast, nonblocking I/O; we don't have a need
+      for intensive computation on the server side
+    Mocha
+    Chai
+    Enzyme: for testing in a React / ES6 environment
+    Airbnb style guide
+    HTTPS for location-based services in Chrome
+
+Follow up on / next steps:
+  - use pem to get SSL certs working
+  - set up React imports to get client side rendering
+  - verify that gulp-env is working
+  - followup on radio API and determine what data is available
+  - wireframes for frontend
+  - DB choice and schema design
