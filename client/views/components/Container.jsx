@@ -8,6 +8,5 @@
 //   }
 // };
 
-const Container = () => React.createElement("h1", null, "Your Local Radio");
-
-module.exports = Container;
+const Container = () =>
+  <h1>Your Local Radio</h1>;

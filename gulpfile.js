@@ -28,20 +28,26 @@ gulp.task('test', shell.task([
   'jasmine-node tests/server/ --junitreport'
 ]));
 
-// clean out previous dist folder
-gulp.task('clean', () => {  
-  return gulp.src('dist', {read: false})
+// clean out previous js files
+gulp.task('clean-js', () => {  
+  return gulp.src('dist/js', {read: false})
+    .pipe(clean());
+});
+
+// clean out previous css files
+gulp.task('clean-css', () => {  
+  return gulp.src('dist/css', {read: false})
     .pipe(clean());
 });
 
 // transform jsx in 'views' into js in 'views-transformed'
 gulp.task('transform', function () {
-  return gulp.src('client/views/*.jsx')
+  return gulp.src('client/views.jsx')
     .pipe(react({harmony: false, es6module: true}))
     .pipe(gulp.dest('client/views-transformed'));
 });
 
-// 
+// convert es6 syntax to es5
 gulp.task('es6', ['transform'], function () {
   return gulp.src('client/views-transformed/*.js')
     .pipe(babel())
@@ -49,27 +55,27 @@ gulp.task('es6', ['transform'], function () {
 });
 
 // concatenate & uglify client-side JS
-gulp.task('build-client', ['clean', 'es6'], () => {
+gulp.task('build-client', ['clean-js', 'es6'], () => {
   return gulp.src('client/views-transformed/*.js')
     .pipe(concat('bundle.js'))
     // .pipe(uglify()) // this is throwing an error, skipping uglify for now
     // .pipe(rename('bundle.min.js'))
-    .pipe(gulp.dest('./dist/'))
+    .pipe(gulp.dest('./dist/js/'))
     .on('error', util.log);
 });
 
 // compile Sass & minify CSS
-gulp.task('sass', ['clean'], () => {
+gulp.task('sass', ['clean-css'], () => {
   return gulp.src('client/styles/main.scss')
    .pipe(sass({outputStyle: 'compressed'}))
    .pipe(rename('main.min.css'))
-   .pipe(gulp.dest('./dist/'));
+   .pipe(gulp.dest('./dist/css/'));
 });
 
 
 // watch Sass and JS files for changes and rebuild when they change
 gulp.task('watch', () => {
-  gulp.watch('client/js/*.js', ['build-client']);
+  gulp.watch('client/views-transformed/*.js', ['build-client']);
   gulp.watch('client/styles/*.scss', ['sass']);
 });
 
