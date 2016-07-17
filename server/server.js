@@ -23,7 +23,7 @@ const sslConfig = {
 const app = express();
 
 // serve static files from client folder only
-app.use('/static', express.static(__dirname + '/../client'));
+app.use('/static', express.static(__dirname + '../client'));
 
 // send requests for root to index.html
 app.get('/', (req, res) => {

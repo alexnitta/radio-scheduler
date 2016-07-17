@@ -28,40 +28,10 @@ gulp.task('test', shell.task([
   'jasmine-node tests/server/ --junitreport'
 ]));
 
-// clean out previous js files
-gulp.task('clean-js', () => {  
-  return gulp.src('dist/js', {read: false})
-    .pipe(clean());
-});
-
 // clean out previous css files
 gulp.task('clean-css', () => {  
   return gulp.src('dist/css', {read: false})
     .pipe(clean());
-});
-
-// transform jsx in 'views' into js in 'views-transformed'
-gulp.task('transform', function () {
-  return gulp.src('client/views.jsx')
-    .pipe(react({harmony: false, es6module: true}))
-    .pipe(gulp.dest('client/views-transformed'));
-});
-
-// convert es6 syntax to es5
-gulp.task('es6', ['transform'], function () {
-  return gulp.src('client/views-transformed/*.js')
-    .pipe(babel())
-    .pipe(gulp.dest('client/views-transformed/'));
-});
-
-// concatenate & uglify client-side JS
-gulp.task('build-client', ['clean-js', 'es6'], () => {
-  return gulp.src('client/views-transformed/*.js')
-    .pipe(concat('bundle.js'))
-    // .pipe(uglify()) // this is throwing an error, skipping uglify for now
-    // .pipe(rename('bundle.min.js'))
-    .pipe(gulp.dest('./dist/js/'))
-    .on('error', util.log);
 });
 
 // compile Sass & minify CSS
@@ -72,10 +42,8 @@ gulp.task('sass', ['clean-css'], () => {
    .pipe(gulp.dest('./dist/css/'));
 });
 
-
-// watch Sass and JS files for changes and rebuild when they change
+// watch Sass files for changes and rebuild when they change
 gulp.task('watch', () => {
-  gulp.watch('client/views-transformed/*.js', ['build-client']);
   gulp.watch('client/styles/*.scss', ['sass']);
 });
 
@@ -91,5 +59,5 @@ gulp.task('run', () => {
   });
 });
 
-// default task: build files, run dev server and watch for changes
-gulp.task('default', ['build-client', 'run', 'watch']);
+// default task: build sass files, run dev server and watch for changes
+gulp.task('default', ['sass', 'run', 'watch']);

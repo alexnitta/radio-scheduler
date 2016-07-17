@@ -1,1 +1,1 @@
-export Container from './components/Container';
+export Container from './Container';
