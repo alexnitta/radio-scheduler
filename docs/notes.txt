@@ -9,6 +9,7 @@ Thoughts on the system architecture:
     Airbnb style guide
     HTTPS for location-based services in Chrome per https://developers.google.com/web/updates/2016/04/geolocation-on-secure-contexts-only?hl=en
     NPR One API: http://dev.npr.org/
+    HTML5 Geolocation API: https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation
 
 Follow up on / next steps:
   - get SSL certs working

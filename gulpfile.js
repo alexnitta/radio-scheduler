@@ -13,7 +13,7 @@ const nodemon = require('gulp-nodemon');
 const util = require('gulp-util');
 
 
-// Lint Task
+// lint with Airbnb style guide
 gulp.task('lint', () => {
   return gulp.src(['client/js/*.js', './server/**/*.js'], {base: '.'})
     .pipe(eslint())
@@ -21,26 +21,19 @@ gulp.task('lint', () => {
     .on('error', util.log);
 });
 
-// Test Task
+// run tests
 gulp.task('test', shell.task([
   'mocha tests/client/.setup.js tests/client',
   'jasmine-node tests/server/ --junitreport'
 ]));
 
-// Set the NODE_ENV from a config JSON file
-gulp.task('env', () => {
-  env({
-    file: './server/config/.env.json'
-  });
-});
-
-// Clean out previous dist folder
+// clean out previous dist folder
 gulp.task('clean', () => {  
   return gulp.src('dist', {read: false})
     .pipe(clean());
 });
 
-// Concatenate & Uglify client-side JS
+// concatenate & uglify client-side JS
   // 'clean' must finish before this will start
 gulp.task('build-client', ['clean'], () => {
   return gulp.src('client/js/*.js')
@@ -51,7 +44,7 @@ gulp.task('build-client', ['clean'], () => {
     .on('error', util.log);
 });
 
-// Compile Sass & minify CSS
+// compile Sass & minify CSS
 gulp.task('sass', () => {
   return gulp.src('client/styles/main.scss')
    .pipe(sass({outputStyle: 'compressed'}))
@@ -60,19 +53,23 @@ gulp.task('sass', () => {
 });
 
 
-// Watch Files For Changes
+// watch files for changes
 gulp.task('watch', () => {
   gulp.watch(['client/js/*.js', 'tests/**'], ['lint', 'test']);
   gulp.watch('client/styles/*.scss', ['sass']);
 });
 
-// Default Task
-gulp.task('default', ['lint', 'test', 'watch']);
 
-// Clean / Concatenate / Minify
-gulp.task('build', ['env', 'clean', 'build-client']);
+// default task: set the NODE_ENV from a config JSON file and run the development server
+gulp.task('default', () => {
+  env({
+    file: './server/config/private/.env.json'
+  });
+  nodemon({
+    script:'./server/server.js',
+    ext: 'js html'
+  });
+});
 
-// // Build client files and start deployed server
-// gulp.task('run', ['build', 'forever']);
-
-
+// build files and run dev server
+gulp.task('build', ['clean', 'build-client', 'default']);
