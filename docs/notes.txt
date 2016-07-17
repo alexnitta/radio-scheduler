@@ -20,16 +20,3 @@ Reminders
   self-signed certificates
   - the commented out code in server.js is an alternate approach to SSL certs that will need to be tested once
   site is in production
-
-
-How to create a self-signed certificate
-
-from http://www.i-visionblog.com/2014/10/create-https-tls-ssl-application-with-express-nodejs-in-localhost-openssl.html
-
-*replace [/path/to/privKey.pem] with local path to the private key file, ending in server/config/private/ssl-keys/privKey.pem
-*replace [/path/to/cert.pem] with local path to the certificate file, ending in server/config/private/ssl-keys/cert.pem
-
-1)  openssl genrsa 1024 [/path/to/privKey.pem]
-2)  openssl req -new -key [/path/to/privKey.pem] -out csr.pem
-  follow the prompts to enter information that is included in the certificate request
-3) openssl x509 -req -days 365 -in csr.pem -signkey [/path/to/privKey.pem] -out [/path/to/cert.pem]
