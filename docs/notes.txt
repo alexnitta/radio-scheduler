@@ -18,3 +18,10 @@ Follow up on / next steps:
   - followup on radio API and determine what data is available
   - wireframes for frontend
   - DB choice and schema design
+
+
+Reminders
+  - SSL certs are sort of working for development only - need to find a way to enable https in Chrome with 
+  self-signed certificates
+  - the commented out code in server.js is an alternate approach to SSL certs that will need to be tested once
+  site is in production
