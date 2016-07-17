@@ -5,6 +5,7 @@ const concat = require('gulp-concat');
 const env = require('gulp-env');
 const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
+const react = require('gulp-react');
 const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 const shell = require('gulp-shell');
@@ -33,19 +34,32 @@ gulp.task('clean', () => {
     .pipe(clean());
 });
 
+// transform jsx in 'views' into js in 'views-transformed'
+gulp.task('transform', function () {
+  return gulp.src('client/views/*.jsx')
+    .pipe(react({harmony: false, es6module: true}))
+    .pipe(gulp.dest('client/views-transformed'));
+});
+
+// 
+gulp.task('es6', ['transform'], function () {
+  return gulp.src('client/views-transformed/*.js')
+    .pipe(babel())
+    .pipe(gulp.dest('client/views-transformed/'));
+});
+
 // concatenate & uglify client-side JS
-  // 'clean' must finish before this will start
-gulp.task('build-client', ['clean'], () => {
-  return gulp.src('client/js/*.js')
+gulp.task('build-client', ['clean', 'es6'], () => {
+  return gulp.src('client/views-transformed/*.js')
     .pipe(concat('bundle.js'))
-    .pipe(uglify())
-    .pipe(rename('bundle.min.js'))
+    // .pipe(uglify()) // this is throwing an error, skipping uglify for now
+    // .pipe(rename('bundle.min.js'))
     .pipe(gulp.dest('./dist/'))
     .on('error', util.log);
 });
 
 // compile Sass & minify CSS
-gulp.task('sass', () => {
+gulp.task('sass', ['clean'], () => {
   return gulp.src('client/styles/main.scss')
    .pipe(sass({outputStyle: 'compressed'}))
    .pipe(rename('main.min.css'))
@@ -53,15 +67,15 @@ gulp.task('sass', () => {
 });
 
 
-// watch files for changes
+// watch Sass and JS files for changes and rebuild when they change
 gulp.task('watch', () => {
-  gulp.watch(['client/js/*.js', 'tests/**'], ['lint', 'test']);
+  gulp.watch('client/js/*.js', ['build-client']);
   gulp.watch('client/styles/*.scss', ['sass']);
 });
 
 
-// default task: set the NODE_ENV from a config JSON file and run the development server
-gulp.task('default', () => {
+// set the NODE_ENV from a config JSON file and run the development server
+gulp.task('run', () => {
   env({
     file: './server/config/private/.env.json'
   });
@@ -71,5 +85,5 @@ gulp.task('default', () => {
   });
 });
 
-// build files and run dev server
-gulp.task('build', ['clean', 'build-client', 'default']);
+// default task: build files, run dev server and watch for changes
+gulp.task('default', ['build-client', 'run', 'watch']);
