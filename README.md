@@ -53,8 +53,10 @@ Enter the following commands in your bash terminal, making sure to:
 2.  `openssl req -new -key [/path/to/privKey.pem] -out csr.pem` (follow the prompts to enter information that is included in the certificate request)
 3.  `openssl x509 -req -days 365 -in csr.pem -signkey [/path/to/privKey.pem] -out [/path/to/cert.pem]`
 
-When accessing your local development site, you will need to set a flag in Chrome to allow self-signed certificates, as follows: 
+
+Per [this post](http://stackoverflow.com/questions/7580508/getting-chrome-to-accept-self-signed-localhost-certificate), when accessing your local development site, you will need to set a flag in Chrome to allow self-signed certificates, as follows: 
 
 1.  Paste this in your chrome: `chrome://flags/#allow-insecure-localhost`
 2. You should see highlighted text saying: *Allow invalid certificates for resources loaded from localhost*
 3. Click `Enable`.
+
