@@ -1,5 +1,4 @@
 const gulp = require('gulp');
-const babel = require('gulp-babel');
 const clean = require('gulp-clean');
 const concat = require('gulp-concat');
 const env = require('gulp-env');
