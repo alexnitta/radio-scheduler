@@ -15,7 +15,6 @@ Follow up on / next steps:
   - wireframes for frontend
   - DB choice and schema design
 
-
 Reminders
   - SSL certs are sort of working for development only - need to find a way to enable https in Chrome with 
   self-signed certificates

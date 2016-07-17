@@ -58,7 +58,7 @@ gulp.task('run', () => {
     file: './server/config/private/.env.json'
   });
   nodemon({
-    script:'./server/server.js',
+    script: './server/server.js',
     ext: 'js html'
   });
 });
