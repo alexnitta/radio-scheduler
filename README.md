@@ -16,7 +16,7 @@ To get up and running:
     "NODE_ENV": "development"
   }
   ```
-  3. `server/private/api-keys.js`, like this (replace [API_KEY] with your own key - register [here] (http://dev.npr.org/guide/prerequisites/))
+  3. `server/private/api-keys.js`, like this: (replace [API_KEY] with your own key - register [here]) (http://dev.npr.org/guide/prerequisites/))
   ```javascript
   {
   const apiKeys = {
@@ -27,7 +27,6 @@ To get up and running:
   }
   ```
   4. `server/network-settings.js`, where you will set up your domain name. Replace [DOMAIN] with your hosted domain name, if you have one.
-
   ```javascript
   const networkSettings = {
     PORT: process.env.PORT || 443,
