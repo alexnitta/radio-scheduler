@@ -36,7 +36,7 @@ To get up and running:
 
   module.exports = networkSettings;
   ```
-5. Start up the development server and watch for changes: `sudo gulp`. This will do the following:
+5. `sudo gulp` to do the following:
   * Compile CSS from Sass
   * Convert JSX -> ES6 -> ES5
   * Start up Nodemon with server.js and set the NODE_ENV to 'development'
