@@ -42,4 +42,14 @@ To get up and running:
   * Start up Nodemon with server.js and set the NODE_ENV to 'development'
   * Watch for changes in `client/views` and `client/styles` and rebuild CSS / JS when files change.
 
- 
+###How to create a self-signed SSL certificate with openssl
+*Adapted from [this post](http://www.i-visionblog.com/2014/10/create-https-tls-ssl-application-with-express-nodejs-in-localhost-openssl.html)*
+
+Enter the following commands in your bash terminal, making sure to:
+*replace [/path/to/privKey.pem] with local path to the private key file, ending in `server/config/private/ssl-keys/privKey.pem`
+*replace [/path/to/cert.pem] with local path to the certificate file, ending in `server/config/private/ssl-keys/cert.pem`
+
+1. `openssl genrsa 1024 [/path/to/privKey.pem]`
+2.  `openssl req -new -key [/path/to/privKey.pem] -out csr.pem` (follow the prompts to enter information that is included in the certificate request)
+3.  `openssl x509 -req -days 365 -in csr.pem -signkey [/path/to/privKey.pem] -out [/path/to/cert.pem]`
+
