@@ -2,7 +2,7 @@
 const express = require('express');
 const fs = require('fs');
 const http = require('http');
-const https = require('spdy');
+const https = require('https');
 const path = require('path');
 
 // import system settings
@@ -17,13 +17,13 @@ const sslConfig = {
   cert: fs.readFileSync(__dirname + '/config/private/ssl-keys/cert.pem'),
 };
 
-// SERVER SETUP V1: self signed SSL certificates
+// SERVER SETUP V1: self-signed SSL certificates
 
 // instantiate server application
 const app = express();
 
-// serve static files from client folder only
-app.use('/static', express.static(__dirname + '../client'));
+//serve static files from client folder only
+app.use(express.static(__dirname + '/../client'));
 
 // send requests for root to index.html
 app.get('/', (req, res) => {

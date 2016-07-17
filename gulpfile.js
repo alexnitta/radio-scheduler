@@ -5,7 +5,6 @@ const concat = require('gulp-concat');
 const env = require('gulp-env');
 const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
-const react = require('gulp-react');
 const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 const shell = require('gulp-shell');

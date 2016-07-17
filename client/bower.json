@@ -1,0 +1,18 @@
+{
+  "name": "radio-scheduler",
+  "homepage": "https://github.com/alexnitta/radio-scheduler",
+  "authors": [
+    "Alex Nitta <a.j.nitta@gmail.com>"
+  ],
+  "description": "Shows a schedule of public radio programs based on your location",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
