@@ -1,9 +1,15 @@
-const Container = () => {
-  return (
-    <div>
-      <h1>Your Local Radio</h1>
-    </div>
-  );
-};
-
-module.exports = Container;
+class Container extends React.Component {
+  
+  constructor(props) {
+    super(props);
+  }
+  
+  render() {
+    return (
+      <div>
+        <h1>Local Radio</h1>
+        <Location />
+      </div>
+    );
+  }
+}

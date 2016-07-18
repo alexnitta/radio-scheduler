@@ -4,6 +4,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var expect = require('chai').expect;
 var assert = require('assert');
+var React = require('../../client/bower_components/react/react.js');
+var ReactDOM = require('../../client/bower_components/react/react-dom.js');
 
 var Location = require('../../client/dist/Location');
 

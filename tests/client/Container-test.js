@@ -1,5 +1,7 @@
 let expect = require('chai').expect;
 let assert = require('assert');
+let React = require('../../client/bower_components/react/react.js');
+let ReactDOM = require('../../client/bower_components/react/react-dom.js');
 
 let Container = require('../../client/dist/Container');
 
