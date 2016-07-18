@@ -35,18 +35,35 @@ var Location = function (_React$Component) {
     };
 
     if ('geolocation' in navigator) {
-      /* geolocation is available */
       navigator.geolocation.getCurrentPosition(setLocation.bind(_this));
     } else {
-      /* geolocation IS NOT available */
       console.log('userLocation is not available');
     }
     return _this;
-  }
+  } // end of constructor function
+
+  // when component updates with the location, send a request to the NPR API 
+
 
   _createClass(Location, [{
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+
+      // const HOST = require('../../server/config/network-settings.').HOST;
+      var HOST = 'https://127.0.0.1';
+
+      fetch(HOST + '/api/npr-data?lat=' + this.state.userLocation.lat + '&long=' + this.state.userLocation.long).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        console.log('data from api request:', data);
+      }).catch(function (err) {
+        console.log('Error in api request: ', error);
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
+
       return React.createElement("div", null, React.createElement("div", { className: "location" }, "Your location is lat: ", this.state.userLocation.lat, ", long: ", this.state.userLocation.long), React.createElement(StationTable, { data: sampleData }));
     }
   }]);

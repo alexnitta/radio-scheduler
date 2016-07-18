@@ -4,6 +4,7 @@ const fs = require('fs');
 const http = require('http');
 const https = require('spdy');
 const path = require('path');
+const rp = require('request-promise');
 
 // import system settings
 const networkSettings = require('./config/network-settings');
@@ -29,6 +30,60 @@ app.use(express.static(__dirname + '/../client'));
 app.get('/', (req, res) => {
   res.sendFile(path.resolve('./client/index.html'));
 });
+
+app.get('/api/npr-data', (req, res) => {
+  
+  const token = require('./config/private/api-keys').nprToken;
+  const lat = req.query.lat;
+  const long = req.query.long;
+
+  // configuration of API GET request
+  
+  // @TODO: even though the header is set correctly, I'm getting a 401 back from the NPR API
+  // I generated the access token from the instructions at https://github.com/adafruit/node_npr
+  // and then tested them manually at http://dev.npr.org/api/ 
+  // but was also given a 401 there as well.
+  // I'm switching to a mock data set to show how it would look if this were working correctly
+  
+  const options = {
+    uri: 'https://api.npr.org/stationfinder/v2/organizations',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'lat': lat,
+      'long': long
+    },
+    json: true // Automatically parses the JSON string in the response 
+  };
+  
+  rp(options)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => {
+      res.status(500).send(error);
+    });
+  
+  
+  // sample code from https://github.com/adafruit/node_npr
+  
+  // const NPR = require('npr-api'),
+  //   npr = new NPR();
+    
+   
+  // npr.one.init(token)
+  //   .then(function() {
+  //     return npr.one.stationfinder();
+  //   })
+  //   .then(function(recommendations) {
+  //     console.log('first result:', recommendations[0]);
+  //     res.send(recommendations);
+  //   })
+  //   .catch((err) => {
+  //     res.status(500).send(err);
+  //   });  
+  
+});
+
 
 // redirect wild card requests to root
 app.get('/*', (req, res) => {
