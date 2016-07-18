@@ -11,7 +11,7 @@ Solution: Use this simple app! It uses your geolocation data to show public radi
 This is a full-stack app, including a React front end with a Node/Express backend. There isn't much user-centric data, so this is a front-end focused app.
 
 ##Technical Choices
-In setting up this app, I focused on building a framework that would allow for expansion with more development time. I used React as a frontend framework because it is easy to compose into views manually, but also can handle more complex state requirements with Redux.
+In setting up this app, I focused on building a framework that would allow for code expansion with more development time. I used React as a frontend framework because it is easy to compose into views manually, but also can handle more complex state requirements with Redux.
 
 The backend is a lightweight Node/Express server that serves up the `index.html`, the static CSS, JS and image files, and a single API endpoint at `/api/npr-data/`. There is not currently a database, because the only details regarding the state of the app - i.e. the user's latitude and longitude - are sourced from the browser's geolocation API. Since the Node/Express architecture is in place, it would be relatively easy to implement a database and store the program state in it.
 
