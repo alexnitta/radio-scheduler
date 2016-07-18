@@ -1,5 +1,7 @@
 #Radio-Scheduler
 
+![Screenshot](/docs/screencast.gif?raw=true "radio-scheduler")
+
 ##Description
 Problem:  You love public radio but you are new to the area. Where to begin?
 
