@@ -1,5 +1,24 @@
 #Radio-Scheduler
-A simple app that uses geolocation and the [NPR One API] (http://dev.npr.org/) to show public radio scheduling in your area.
+
+##Description
+Problem:  You love public radio but you are new to the area. Where to begin?
+
+Solution: Use this simple app! It uses your geolocation data to show public radio scheduling in your area.
+
+##Scope
+This is a full-stack app, including a React front end with a Node/Express backend. There isn't much user-centric data, so this is a front-end focused app.
+
+##Technical Choices
+In setting up this app, I focused on building a framework that would allow for expansion with more development time. I used React as a frontend framework because it is easy to compose into views manually, but also can handle more complex state requirements with Redux.
+
+The backend is a lightweight Node/Express server that serves up the `index.html`, the static CSS, JS and image files, and a single API endpoint at `/api/npr-data/`. There is not currently a database, because the only details regarding the state of the app - i.e. the user's latitude and longitude - are sourced from the browser's geolocation API. Since the Node/Express architecture is in place, it would be relatively easy to implement a database and store the program state in it.
+
+I started out by setting up HTTPS, because I know that Chrome requires it for geolocation data. Since Chrome is one of the most commonly used browsers, it made sense to make sure this was in place before building the app. Setting up the SSL certificates ended up eating into my development time, and as a result I didn't get to debug a few other things, namely the NPR API.
+
+I looked up the [API reference](http://dev.npr.org/api/) to get an example schema of the data that would be returned, then structured my React components around that. Once I got further along, I tested the credentials I created using their recommended steps, but kept getting a 401 error. As it turns out, there's not much documentation on the API yet, and not many people discussing how to debug it online. 
+
+If I had more time, I would contact the developer who wrote the NPR API and figure out why my access token doesn't work. For now, I'm using mock data to show how the UI looks.
+
 ##Developer Guide
 To get up and running:
 
