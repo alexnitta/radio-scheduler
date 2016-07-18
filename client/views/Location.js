@@ -1,32 +1,11 @@
-// const userLocation = {
-//   lat: 0,
-//   long: 0
-// };
-
-// if (!navigator) {
-//   let navigator = {};
-// }
-
-// if ('geolocation' in navigator) {
-//   /* geolocation is available */
-//   navigator.geolocation.getCurrentPosition(function(position) {
-//     userLocation.lat = position.coords.latitude;
-//     userLocation.long = position.coords.longitude;
-//     console.log('userLocation is: ', userLocation);
-//   });
-// } else {
-//   /* geolocation IS NOT available */
-//   console.log('userLocation is not available');
-// }
-
 class Location extends React.Component {
   
   constructor(props) {
     super(props);
     this.state = {
       userLocation: {
-        lat: '...',
-        long: '...'
+        lat: '[ ... ]',
+        long: '[ ... ]'
       }
     };
     

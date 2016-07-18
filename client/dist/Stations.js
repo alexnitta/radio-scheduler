@@ -8,21 +8,21 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Container = function (_React$Component) {
-  _inherits(Container, _React$Component);
+var Stations = function (_React$Component) {
+  _inherits(Stations, _React$Component);
 
-  function Container(props) {
-    _classCallCheck(this, Container);
+  function Stations(props) {
+    _classCallCheck(this, Stations);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(Container).call(this, props));
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(Stations).call(this, props));
   }
 
-  _createClass(Container, [{
+  _createClass(Stations, [{
     key: "render",
     value: function render() {
-      return React.createElement("div", null, React.createElement("h1", null, "Local Radio"), React.createElement(Location, null), React.createElement(Stations, null));
+      return React.createElement("table", null, React.createElement("tr", null, React.createElement("th", null, "Call"), React.createElement("th", null, "Frequency"), React.createElement("th", null, "Band"), React.createElement("th", null, "Show"), React.createElement("th", null, "Website")), React.createElement("tr", null, React.createElement("td", null, "KQED"), React.createElement("td", null, "88.5"), React.createElement("td", null, "FM"), React.createElement("td", null, "Forum"), React.createElement("td", null, "http://kqed.org")));
     }
   }]);
 
-  return Container;
+  return Stations;
 }(React.Component);

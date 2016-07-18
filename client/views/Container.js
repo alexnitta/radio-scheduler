@@ -9,6 +9,7 @@ class Container extends React.Component {
       <div>
         <h1>Local Radio</h1>
         <Location />
+        <Stations />
       </div>
     );
   }

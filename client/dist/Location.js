@@ -8,27 +8,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// const userLocation = {
-//   lat: 0,
-//   long: 0
-// };
-
-// if (!navigator) {
-//   let navigator = {};
-// }
-
-// if ('geolocation' in navigator) {
-//   /* geolocation is available */
-//   navigator.geolocation.getCurrentPosition(function(position) {
-//     userLocation.lat = position.coords.latitude;
-//     userLocation.long = position.coords.longitude;
-//     console.log('userLocation is: ', userLocation);
-//   });
-// } else {
-//   /* geolocation IS NOT available */
-//   console.log('userLocation is not available');
-// }
-
 var Location = function (_React$Component) {
   _inherits(Location, _React$Component);
 
@@ -39,8 +18,8 @@ var Location = function (_React$Component) {
 
     _this.state = {
       userLocation: {
-        lat: '...',
-        long: '...'
+        lat: '[ ... ]',
+        long: '[ ... ]'
       }
     };
 
