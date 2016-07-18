@@ -3,6 +3,8 @@ const userLocation = {
   long: 0
 };
 
+let navigator = navigator || {};
+
 if ('geolocation' in navigator) {
   /* geolocation is available */
   navigator.geolocation.getCurrentPosition(function(position) {
@@ -14,3 +16,5 @@ if ('geolocation' in navigator) {
   /* geolocation IS NOT available */
   console.log('userLocation is not available');
 }
+
+module.exports = userLocation;

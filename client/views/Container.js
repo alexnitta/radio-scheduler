@@ -5,3 +5,5 @@ const Container = () => {
     </div>
   );
 };
+
+module.exports = Container;

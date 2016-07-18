@@ -8,6 +8,7 @@ const mocha = require('gulp-mocha');
 const rename = require('gulp-rename');
 const react = require('gulp-react');
 const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps');
 const shell = require('gulp-shell');
 const uglify = require('gulp-uglify');
 const nodemon = require('gulp-nodemon');
@@ -22,28 +23,39 @@ gulp.task('lint', () => {
     .on('error', util.log);
 });
 
-// run tests
-gulp.task('test', shell.task([
-  'mocha tests/client/.setup.js tests/client',
-  'jasmine-node tests/server/ --junitreport'
-]));
+// use Babel to transpile test code
+gulp.task('build-client-tests', function () {
+  return gulp.src('./tests/client/*.js')
+  .pipe(sourcemaps.init())
+  .pipe(babel({
+    presets: ['es2015']
+  }))
+  .pipe(gulp.dest('./tests/client-built-tests/'));
+});
+
+// run client tests with Mocha
+gulp.task('test-client', ['build-client-tests'], function () {
+  const mocha = require('gulp-mocha');
+  gulp.src('./tests/client-built-tests/*.js', {read: false})
+  .pipe(mocha({reporter: 'spec'}));
+});
 
 // transform jsx in 'views' into js in 'views-transformed'
 gulp.task('es6', function () {
   return gulp.src('client/views/*.js')
-    .pipe(react({harmony: false, es6module: true}))
-    .pipe(babel({
-      presets: ['es2015']
-    }))
-    .pipe(gulp.dest('client/dist/'));
+  .pipe(react({harmony: false, es6module: true}))
+  .pipe(babel({
+    presets: ['es2015']
+  }))
+  .pipe(gulp.dest('client/dist/'));
 });
 
 // compile Sass & minify CSS
 gulp.task('sass', () => {
   return gulp.src('client/styles/main.scss')
-   .pipe(sass({outputStyle: 'compressed'}))
-   .pipe(rename('main.min.css'))
-   .pipe(gulp.dest('client/dist/'));
+  .pipe(sass({outputStyle: 'compressed'}))
+  .pipe(rename('main.min.css'))
+  .pipe(gulp.dest('client/dist/'));
 });
 
 // watch Sass and JS files for changes and rebuild when they change

@@ -20,3 +20,7 @@ Reminders
   self-signed certificates
   - the commented out code in server.js is an alternate approach to SSL certs that will need to be tested once
   site is in production
+
+
+resources:
+  testing: http://anthonysierra.com/11012015b
