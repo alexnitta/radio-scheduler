@@ -20,7 +20,8 @@ var Location = function (_React$Component) {
       userLocation: {
         lat: '[ ... ]',
         long: '[ ... ]'
-      }
+      },
+      data: sampleData
     };
 
     var setLocation = function setLocation(position) {
@@ -46,7 +47,7 @@ var Location = function (_React$Component) {
   _createClass(Location, [{
     key: 'render',
     value: function render() {
-      return React.createElement("div", null, "Your location is lat: ", this.state.userLocation.lat, ", long: ", this.state.userLocation.long);
+      return React.createElement("div", null, React.createElement("div", { className: "location" }, "Your location is lat: ", this.state.userLocation.lat, ", long: ", this.state.userLocation.long), React.createElement(StationTable, { data: sampleData }));
     }
   }]);
 

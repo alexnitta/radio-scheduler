@@ -6,7 +6,8 @@ class Location extends React.Component {
       userLocation: {
         lat: '[ ... ]',
         long: '[ ... ]'
-      }
+      },
+      data: sampleData
     };
     
     const setLocation = (position) => {
@@ -32,7 +33,10 @@ class Location extends React.Component {
   render() {
     return (
       <div>
-        Your location is lat: {this.state.userLocation.lat}, long: {this.state.userLocation.long}
+        <div className="location">
+          Your location is lat: {this.state.userLocation.lat}, long: {this.state.userLocation.long}
+        </div>
+        <StationTable data={sampleData} />
       </div>
     );
   }

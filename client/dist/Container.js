@@ -20,7 +20,7 @@ var Container = function (_React$Component) {
   _createClass(Container, [{
     key: "render",
     value: function render() {
-      return React.createElement("div", null, React.createElement("h1", null, "Local Radio"), React.createElement(Location, null), React.createElement(Stations, null));
+      return React.createElement("div", { id: "main" }, React.createElement("h1", null, React.createElement("img", { src: 'assets/radio-tower-icon.png', className: "radio-tower" }), "Local Radio"), React.createElement(Location, null));
     }
   }]);
 

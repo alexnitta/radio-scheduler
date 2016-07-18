@@ -6,10 +6,12 @@ class Container extends React.Component {
   
   render() {
     return (
-      <div>
-        <h1>Local Radio</h1>
+      <div id="main">
+        <h1>
+          <img src={'assets/radio-tower-icon.png'} className="radio-tower" />
+          Local Radio
+        </h1>
         <Location />
-        <Stations />
       </div>
     );
   }

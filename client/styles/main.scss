@@ -4,4 +4,46 @@ $primary-color: DimGray;
 body {
   font: 100% $font-stack;
   color: $primary-color;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#main {
+  width: 100% ;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.radio-tower {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+.location {
+  margin-bottom: 10px;
+}
+
+.info {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+.info td, .info th {
+  border: 1px solid black;
+  padding: 5px;
+}
+.info tr:first-child th {
+  border-top: 0;
+}
+.info tr:last-child td {
+  border-bottom: 0;
+}
+.info tr td:first-child,
+.info tr th:first-child {
+  border-left: 0;
+}
+.info tr td:last-child,
+.info tr th:last-child {
+  border-right: 0;
 }
