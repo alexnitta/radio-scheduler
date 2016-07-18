@@ -19,7 +19,7 @@ I started out by setting up HTTPS, because I know that Chrome requires it for ge
 
 I looked up the [API reference](http://dev.npr.org/api/) to get an example schema of the data that would be returned, then structured my React components around that. Once I got further along, I tested the credentials I created using their recommended steps, but kept getting a 401 error. As it turns out, there's not much documentation on the API yet, and not many people discussing how to debug it online. 
 
-If I had more time, I would contact the developer who wrote the NPR API and figure out why my access token doesn't work. For now, I'm using mock data to show how the UI looks. I also spent a good deal of time setting up my development environment, and the Gulpfile is working smoothly. If I were to do this project over, I would spend less time with automation and more time writing tests. As another consequence of my time spent setting up the infrastructure, I didn't have time to deploy the site.
+If I had more time, I would contact the developer who wrote the NPR API and figure out why my access token doesn't work. For now, I'm using mock data to show how the UI looks. I also spent a good deal of time setting up my development environment, taking the time to set up linting with a style guide and compiling CSS from Sass via the Gulpfile, which is working smoothly. If I were to do this project over, I would spend less time with automation and more time writing tests. As another consequence of my time spent setting up the infrastructure, I didn't have time to deploy the site.
 
 ##Portfolio
 Here are some links to my LinkedIn and other work:
