@@ -82,18 +82,7 @@ var sampleData = {
       }]
     },
     "errors": [null]
-  },
-  /*
-  
-  row.call = station.attributes.call;
-  row.frequency = station.attributes.frequency;
-  row.band = station.attributes.band;
-  row.name = station.attributes.name;
-  row.website = station.links.web[0].href;
-  
-  */
-
-  { // station
+  }, { // station
     'attributes': {
       'call': 'KALW',
       'band': 'FM',

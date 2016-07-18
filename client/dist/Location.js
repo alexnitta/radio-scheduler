@@ -33,7 +33,6 @@ var Location = function (_React$Component) {
           long: position.coords.longitude
         }
       });
-      console.log('userLocation is: ', _this.props.userLocation);
     };
 
     if ('geolocation' in navigator) {
@@ -48,28 +47,27 @@ var Location = function (_React$Component) {
 
 
   _createClass(Location, [{
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
 
       this.setState({
         data: sampleData
       });
 
-      // const HOST = require('../../server/config/network-settings.').HOST;
-      var HOST = 'https://127.0.0.1';
+      // const HOST = 'https://127.0.0.1';
 
-      fetch(HOST + '/api/npr-data?lat=' + this.state.userLocation.lat + '&long=' + this.state.userLocation.long).then(function (res) {
-        return res.json();
-      }).then(function (data) {
-        console.log('data from api request:', data);
-      }).catch(function (err) {
-        console.log('Error in api request: ', error);
-      });
+      // fetch(`${HOST}/api/npr-data?lat=${this.state.userLocation.lat}&long=${this.state.userLocation.long}`)
+      //   .then((res) => res.json())
+      //   .then((data) => {
+      //     console.log('data from api request:', data);
+      //   })
+      //   .catch((err) => {
+      //     console.log('Error in api request: ', error);
+      //   });
     }
   }, {
     key: 'render',
     value: function render() {
-
       return React.createElement("div", null, React.createElement("div", { className: "location" }, this.state.data.items[0] ? 'Your location is lat: ' + this.state.userLocation.lat + ', long: ' + this.state.userLocation.long : 'Finding your location . . .'), React.createElement(StationTable, { data: this.state.data }));
     }
   }]);
