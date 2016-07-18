@@ -96,3 +96,13 @@ Per [this post](http://stackoverflow.com/questions/7580508/getting-chrome-to-acc
 2. You should see highlighted text saying: *Allow invalid certificates for resources loaded from localhost*
 3. Click `Enable`.
 
+###Getting Started with the NPR API
+
+Follow the steps in [the guide](http://dev.npr.org/guide/prerequisites/) to get set up with an account, then see the [npr-api package](https://www.npmjs.com/package/npr-api) for instructions on how to set up an access token. You'll need to save a JavaScript file to `server/config/private/get_token.js`, then run it to generate an access token.  Once you've done that, save the access token in `server/config/private/api-keys.js` like this:
+```javascript
+const apiKeys = {
+  nprToken: '[YOUR_ACCESS_TOKEN_HERE]',
+};
+
+module.exports = apiKeys;
+```
