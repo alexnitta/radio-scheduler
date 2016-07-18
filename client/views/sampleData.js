@@ -30,11 +30,11 @@ const sampleData = {
         },
         "guid": "string",
         "org_id": "string",
-        "name": "Name",
+        "name": "Public media for Northern California",
         "title": "string",
         "abbreviation": "string",
-        "call": "CALL",
-        "frequency": "99.9",
+        "call": "KQED",
+        "frequency": "88.5",
         "band": "FM",
         "tagline": "",
         "address": [
@@ -63,7 +63,7 @@ const sampleData = {
       "links": {
         "web": [
           {
-            "href": "http://station.org",
+            "href": "http://kqed.org",
             "type_name": "string",
             "title": "",
             "type_id": "1"
@@ -99,7 +99,45 @@ const sampleData = {
       "errors": [
         null
       ]
-    }
+    },
+    /*
+    
+    row.call = station.attributes.call;
+    row.frequency = station.attributes.frequency;
+    row.band = station.attributes.band;
+    row.name = station.attributes.name;
+    row.website = station.links.web[0].href;
+    
+    */
+    
+    { // station
+      'attributes': {
+        'call': 'KALW',
+        'band': 'FM',
+        'frequency': '91.7',
+        'name': 'Local public radio',
+      },
+      'links': {
+        'web': [{
+          'href':'http://kalw.org'
+        }]
+      }
+    },
+    
+    { // station
+      'attributes': {
+        'call': 'KPFA',
+        'band': 'FM',
+        'frequency': '94.1',
+        'name': 'Community Powered Radio',
+      },
+      'links': {
+        'web': [{
+          'href':'https://kpfa.org/'
+        }]
+      }
+    },
+    
   ],
   "links": {},
   "errors": [

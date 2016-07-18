@@ -7,7 +7,9 @@ class Location extends React.Component {
         lat: '[ ... ]',
         long: '[ ... ]'
       },
-      data: sampleData
+      data: {
+        items: []
+      }
     };
     
     const setLocation = (position) => {
@@ -30,6 +32,10 @@ class Location extends React.Component {
   // when component updates with the location, send a request to the NPR API 
   componentDidUpdate() {
     
+    this.setState({
+      data: sampleData
+    });
+    
     // const HOST = require('../../server/config/network-settings.').HOST;
     const HOST = 'https://127.0.0.1';
     
@@ -49,9 +55,11 @@ class Location extends React.Component {
     return (
       <div>
         <div className="location">
-          Your location is lat: {this.state.userLocation.lat}, long: {this.state.userLocation.long}
+          {this.state.data.items[0] ? 
+            `Your location is lat: ${this.state.userLocation.lat}, long: ${this.state.userLocation.long}`
+            : `Finding your location . . .`}
         </div>
-        <StationTable data={sampleData} />
+        <StationTable data={this.state.data} />
       </div>
     );
   }

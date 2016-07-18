@@ -21,7 +21,9 @@ var Location = function (_React$Component) {
         lat: '[ ... ]',
         long: '[ ... ]'
       },
-      data: sampleData
+      data: {
+        items: []
+      }
     };
 
     var setLocation = function setLocation(position) {
@@ -49,6 +51,10 @@ var Location = function (_React$Component) {
     key: 'componentDidUpdate',
     value: function componentDidUpdate() {
 
+      this.setState({
+        data: sampleData
+      });
+
       // const HOST = require('../../server/config/network-settings.').HOST;
       var HOST = 'https://127.0.0.1';
 
@@ -64,7 +70,7 @@ var Location = function (_React$Component) {
     key: 'render',
     value: function render() {
 
-      return React.createElement("div", null, React.createElement("div", { className: "location" }, "Your location is lat: ", this.state.userLocation.lat, ", long: ", this.state.userLocation.long), React.createElement(StationTable, { data: sampleData }));
+      return React.createElement("div", null, React.createElement("div", { className: "location" }, this.state.data.items[0] ? 'Your location is lat: ' + this.state.userLocation.lat + ', long: ' + this.state.userLocation.long : 'Finding your location . . .'), React.createElement(StationTable, { data: this.state.data }));
     }
   }]);
 
