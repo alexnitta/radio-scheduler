@@ -52,7 +52,7 @@ To get up and running:
     "NODE_ENV": "development"
   }
   ```
-  3. `server/private/api-keys.js`, like this: (replace [API_KEY] with your own key - register [here]) (http://dev.npr.org/guide/prerequisites/))
+  3. `server/private/api-keys.js`, like this: (replace [API_KEY] with your own key - register [here](http://dev.npr.org/guide/prerequisites/))
   ```javascript
   {
   const apiKeys = {
@@ -82,8 +82,9 @@ To get up and running:
 *Adapted from [this post](http://www.i-visionblog.com/2014/10/create-https-tls-ssl-application-with-express-nodejs-in-localhost-openssl.html)*
 
 Enter the following commands in your bash terminal, making sure to:
-*replace [/path/to/privKey.pem] with local path to the private key file, ending in `server/config/private/ssl-keys/privKey.pem`
-*replace [/path/to/cert.pem] with local path to the certificate file, ending in `server/config/private/ssl-keys/cert.pem`
+
+  * replace [/path/to/privKey.pem] with local path to the private key file, ending in `server/config/private/ssl-keys/privKey.pem`
+  * replace [/path/to/cert.pem] with local path to the certificate file, ending in `server/config/private/ssl-keys/cert.pem`
 
 1. `openssl genrsa 1024 [/path/to/privKey.pem]`
 2.  `openssl req -new -key [/path/to/privKey.pem] -out csr.pem` (follow the prompts to enter information that is included in the certificate request)
